@@ -1,3 +1,6 @@
+///<summary>
+///Simple player movement script (Forward, Backwards, Left, Right)
+///</summary>
 using UnityEngine;
 
 
@@ -11,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
         MoveSideways();
     }
 
-
-
+    //translates not rigidbody/velocity changes
     public void MoveForward()
     {
         float forwardInput = Input.GetAxis("Vertical");
