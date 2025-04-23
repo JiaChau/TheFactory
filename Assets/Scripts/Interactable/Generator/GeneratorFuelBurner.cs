@@ -4,12 +4,19 @@
 /// </summary>
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GeneratorFuelBurner : MonoBehaviour
 {
     [Header("UI Fuel Slots")]
     [Tooltip("List of fuel slots where fuel items can be placed.")]
     public List<Transform> fuelSlots; // Drop the slots in the inspector
+
+    /// <summary>
+    /// Fires whenever we finish burning one unit of fuel.
+    /// Listeners can spawn products, play sounds, etc.
+    /// </summary>
+    public event Action<ItemData> OnFuelUnitBurned;
 
     private DraggableItem currentFuel;
     private float burnTimer = 0f;
@@ -43,6 +50,7 @@ public class GeneratorFuelBurner : MonoBehaviour
         if (currentFuel != null)
         {
             currentFuel.RemoveAmount(1);
+            OnFuelUnitBurned?.Invoke(currentFuel.itemData);
 
             if (currentFuel.amount > 0)
             {

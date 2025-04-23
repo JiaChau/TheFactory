@@ -745,6 +745,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &240098960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240098961}
+  m_Layer: 0
+  m_Name: OutputWaypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240098961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240098960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.17, y: 0, z: -11.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &269422097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1740,7 @@ GameObject:
   - component: {fileID: 683976564}
   - component: {fileID: 683976563}
   - component: {fileID: 683976565}
+  - component: {fileID: 683976566}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -1791,6 +1823,26 @@ MonoBehaviour:
   fuelSlots:
   - {fileID: 372508586}
   - {fileID: 795923256}
+--- !u!114 &683976566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683976561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae351b38814f87f40999a6954ff0f84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 240098961}
+  mappings:
+  - fuelInput: {fileID: 11400000, guid: 1e15b4d30efeef1468e50bb2a23c4d54, type: 2}
+    unitsPerOutput: 3
+    spawnCount: 4
+    amountPerProduct: 2
+    productPrefab: {fileID: 350727025696451891, guid: 0a57b03d40ed8b84e9d870de1435b879, type: 3}
 --- !u!1 &795923255
 GameObject:
   m_ObjectHideFlags: 0
@@ -4094,3 +4146,4 @@ SceneRoots:
   - {fileID: 1126077853}
   - {fileID: 438888469}
   - {fileID: 1511505090}
+  - {fileID: 240098961}

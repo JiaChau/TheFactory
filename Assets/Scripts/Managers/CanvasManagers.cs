@@ -102,7 +102,9 @@ public class CanvasManagers : MonoBehaviour
 
     }
 
-    //Same concept as above but backwards
+    /** 
+     * Was a infinite recursive call...
+     * Same concept as above but backwards
     public void CloseSecondaryCanvas(GameObject canvas, bool currentBool)
     {
         //to make sure both close at once (might change)
@@ -113,6 +115,18 @@ public class CanvasManagers : MonoBehaviour
         canvas.SetActive(currentBool);
         isSecondaryCanvasOpen = currentBool;
     }
+    **/
+    public void CloseSecondaryCanvas(GameObject canvas, bool currentBool)
+    {
+        // 1) actually close the secondary canvas
+        canvas.SetActive(currentBool);
+        isSecondaryCanvasOpen = currentBool;    // now false
+
+        // 2) if the inventory is still open, close it
+        if (isInventoryOpen)
+            CloseMainInventory();
+    }
+
 
     //this is a switch that checks the canvas type
     public GameObject GetSecondaryCanvas()
