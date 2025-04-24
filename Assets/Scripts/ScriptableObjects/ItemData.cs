@@ -21,7 +21,7 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     //this is taken out for now because all the assets
     //so far use the same material, but that may not be true forever
-   // public Material material;
+    public Material material;
     public ItemType itemType;
     public int amount;
     public int maxStackSize = 99;
@@ -31,7 +31,8 @@ public class ItemData : ScriptableObject
     public enum ItemType
     {
         wood_log,
-        cooper
+        cooper,
+        coal
     }
 
     public void SetAmount(int newAmount)

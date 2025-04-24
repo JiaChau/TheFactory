@@ -61,9 +61,14 @@ public class CanvasManagers : MonoBehaviour
             }
 
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            InventoryManager.Instance.DebugPrintInventory();
+        }
+
     }
 
-    
+
     public void OpenMainInventory()
     {
         inventoryCanvas.SetActive(true);

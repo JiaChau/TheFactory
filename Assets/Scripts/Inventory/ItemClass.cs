@@ -43,7 +43,7 @@ public class ItemClass : MonoBehaviour
 
         filter.mesh = itemData.mesh;
         itemData.SetAmount(amount);
-        //renderer.material = itemData.material;
+        renderer.material = itemData.material;
     }
 
     //handles the pick-up on collision (no button for now)

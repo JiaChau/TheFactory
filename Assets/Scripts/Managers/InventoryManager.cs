@@ -23,7 +23,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-   
+
     public bool AddItem(ItemData data, int amount = 1)
     {
         bool added = false;
@@ -74,7 +74,7 @@ public class InventoryManager : MonoBehaviour
     // safe backward iteration for removal
     public void ConsumeItem(ItemData data, int amount)
     {
-        for (int i = inventory.slots.Count - 1; i >= 0; i--) 
+        for (int i = inventory.slots.Count - 1; i >= 0; i--)
         {
             var slot = inventory.slots[i];
             if (slot.CanStackWith(data))
@@ -97,6 +97,35 @@ public class InventoryManager : MonoBehaviour
         //refresh for updated visuals
         inventoryUI.RefreshInventoryUI();
     }
+    
+    //Simple Debug is checked for in canvas manager since it is already polling 
+    //update binded to the K key
+public void DebugPrintInventory()
 
+    {
+        if (inventory.slots.Count > 0)
+
+        {
+            Debug.Log("=== INVENTORY ===");
+            foreach (var slot in inventory.slots)
+            {
+                Debug.Log($"{slot.itemData.itemType} x{slot.amount}");
+            }
+            Debug.Log("=================");
+        }
+        else
+        {
+            Debug.Log("=== INVENTORY ===");
+            Debug.Log(" EMPTY ");
+            Debug.Log("=================");
+        }
+    }
 }
+
+  
+
+
+
+
+
 

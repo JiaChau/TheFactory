@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05002d63bf460764e8996799819b9688, type: 3}
-  m_Name: WoodLog
+  m_Name: Coal
   m_EditorClassIdentifier: 
-  mesh: {fileID: 5101702725964522417, guid: 104b424450c9f4f4db81d1ca24dfaed1, type: 3}
-  icon: {fileID: 21300000, guid: cae50cc258a0c334fbea108921da17c1, type: 3}
-  itemType: 0
-  amount: 4
-  maxStackSize: 50
+  mesh: {fileID: -5677051624608227671, guid: 72c96045524186f4fac63001e0ba18f3, type: 3}
+  icon: {fileID: 21300000, guid: 6911951c801fdcc4fb316ff63746992b, type: 3}
+  material: {fileID: 2100000, guid: 7b8530a921aaaf34aa7b01625685b84f, type: 2}
+  itemType: 2
+  amount: 0
+  maxStackSize: 99
   fuelProperties:
     isFuel: 1
-    burnDuration: 5
+    burnDuration: 15

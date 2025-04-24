@@ -30,6 +30,11 @@ public struct OutputMapping
     /// Prefab to instantiate.
     /// </summary>
     public GameObject productPrefab;
+
+    /// <summary>
+    /// Reference to the item data for dynamic adjustments.
+    /// </summary>
+    public ItemData itemData; // New reference for dynamic item data
 }
 
 public class GeneratorOutput : MonoBehaviour
@@ -91,6 +96,7 @@ public class GeneratorOutput : MonoBehaviour
             if (ic != null)
             {
                 ic.amount = map.amountPerProduct;
+                ic.itemData = map.itemData;
                 ic.ApplyItemVisuals();
             }
 
