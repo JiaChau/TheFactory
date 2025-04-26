@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update() {
         if (!IsPlaying) return;
-        if (story.currentChoices.Count == 0 && InputManager.GetInstance().SubmitPressed())
+        //if (story.currentChoices.Count == 0 && InputManager.GetInstance().SubmitPressed())
             ContinueStory();
     }
 
