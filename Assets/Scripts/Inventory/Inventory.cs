@@ -1,10 +1,29 @@
-///<summary>
-///The actual inventory several dumbed down
-///only handles the visual slots now. 
-///currently: no slots visible and slots get added dynamically as needed
-///MIGHT CHANGE so player can organize inventory
-///</summary>
 
+//using System.Collections.Generic;
+//using Unity.VisualScripting.Antlr3.Runtime.Misc;
+//using UnityEngine;
+
+//public class Inventory
+//{
+//   private List<Item> itemList;
+
+//    public Inventory()
+//    {
+//        itemList = new List<Item>();
+//        Debug.Log(itemList.Count);
+//        foreach(var item in itemList)
+//        {
+//            Debug.Log(item.amount + " " + item.itemType);
+
+//        }
+//    }
+
+//    public void AddItem(Item item)
+//    {
+//        itemList.Add(item);
+//    }
+
+//This goes on the player
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +32,6 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> slots = new List<InventorySlot>();
     public int maxSlots = 24;
 
-    //handles the adding of the visual slots
     public bool AddItem(ItemData data, int amount = 1)
     {
         if (slots.Count < maxSlots)
@@ -25,7 +43,7 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    //Simple swapping function
+
 public void MoveItem(int fromIndex, int toIndex)
     {
         if (fromIndex < 0 || fromIndex >= slots.Count || toIndex < 0 || toIndex >= slots.Count)

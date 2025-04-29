@@ -1,7 +1,3 @@
-///<summary>
-///This links to the second half of the players inventory logic (the "dropping") part.
-///Allows us drop things and have them lock into the desired location
-///</summary>
 using UnityEngine;
 using UnityEngine.EventSystems;
 

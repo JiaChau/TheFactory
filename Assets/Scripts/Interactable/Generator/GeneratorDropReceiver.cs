@@ -13,8 +13,8 @@ public class GeneratorDropReceiver : MonoBehaviour, IDropReceiver
     public void HandleItemDrop(ItemData itemData, int amount)
     {
 
-       // if item has the fuel property boolean (inside scriptable object), we will continue the logic
-       if(itemData.fuelProperties.isFuel)
+        // if item has the fuel property boolean (inside scriptable object), we will continue the logic
+        if (itemData.fuelProperties.isFuel)
         {
             Debug.Log("🔥 Fire started with " + itemData.itemType + " x" + amount);
 
@@ -35,8 +35,8 @@ public class GeneratorDropReceiver : MonoBehaviour, IDropReceiver
 
             itemUI.transform.localPosition = Vector3.zero;
 
-            
-            
+
+
         }
         //simply a hanging else, can be taken out later after testing
         else

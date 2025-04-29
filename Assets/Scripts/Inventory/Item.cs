@@ -1,7 +1,3 @@
-///<summary>
-///This was my first attempt at a modular approach I'm 75% I don't need
-///this class but I want to triple check before deleting it
-///</summary>
 using UnityEngine;
 
 public class Item

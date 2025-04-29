@@ -1,8 +1,4 @@
-﻿///<summary>
-///This goes on the parent for the Grid for main inventory "box"
-///It handles refreshing as needed to makes sure all data is correct visually
-///</summary>
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -15,20 +11,9 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
+        Instance = this;
     }
 
-    //we use this to make sure that any time it is changed
-    //in any way, it stays updated
     public void RefreshInventoryUI()
     {
         foreach (Transform child in slotContainer)
@@ -51,10 +36,14 @@ public class InventoryUI : MonoBehaviour
 
                 dragItem.itemData = slotData.itemData;
                 dragItem.amount = slotData.amount;
-                dragItem.image.sprite = slotData.itemData.icon;
+                dragItem.image.sprite = slotData.itemData.icon; // Assuming ItemData has an icon sprite
                 dragItem.parentAfterDrag = slotGO.transform;
 
-                //amount in inventory
+                //  Set the image/icon
+                if (dragItem.image != null && dragItem.itemData.icon != null)
+                    dragItem.image.sprite = dragItem.itemData.icon;
+
+                //  Set the amount text (this is the line you asked about!)
                 if (dragItem.amountText != null)
                     dragItem.amountText.text = dragItem.amount > 1 ? dragItem.amount.ToString() : "";
             }

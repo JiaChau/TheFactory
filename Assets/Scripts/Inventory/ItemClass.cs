@@ -1,9 +1,43 @@
-///<summary>
-///So, this goes on the ItemForInventoryInWorld and that this does is:
-///uses the ItemDataBase Scriptable Object AS WELL AS the 
-///ItemData Scriptable Object to create a single prefab that can change on the fly
-///to whatever item we need with the desired data we want to give it
-///</summary>
+////using UnityEngine;
+
+////public class ItemClass : MonoBehaviour
+////{
+////    public ItemData itemData;
+
+////    private void Awake()
+////    {
+////        GetComponent<MeshFilter>().mesh = itemData.mesh;
+////    }
+////}
+//using UnityEngine;
+
+//[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
+//public class ItemClass : MonoBehaviour
+//{
+//    public ItemData itemData;
+
+//    private void Start()
+//    {
+//        ApplyItemVisuals();
+//    }
+
+//    public void ApplyItemVisuals()
+//    {
+//        if (itemData == null) return;
+
+//        var filter = GetComponent<MeshFilter>();
+//        var renderer = GetComponent<MeshRenderer>();
+
+//        filter.mesh = itemData.mesh;
+//        //renderer.material = itemData.material;
+//    }
+
+//    public void SetItem(ItemData newItem)
+//    {
+//        itemData = newItem;
+//        ApplyItemVisuals();
+//    }
+//}
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
@@ -33,7 +67,6 @@ public class ItemClass : MonoBehaviour
         }
     }
 
-    //desplays the mesh and calls the set amount
     public void ApplyItemVisuals()
     {
         if (itemData == null) return;
@@ -43,10 +76,9 @@ public class ItemClass : MonoBehaviour
 
         filter.mesh = itemData.mesh;
         itemData.SetAmount(amount);
-        renderer.material = itemData.material;
+        //renderer.material = itemData.material;
     }
 
-    //handles the pick-up on collision (no button for now)
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

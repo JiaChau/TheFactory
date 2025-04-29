@@ -97,8 +97,8 @@ public class GeneratorFuelBurner : MonoBehaviour
             : 0f;
     }
 
-    
-        public void GeneratorButton()
+
+    public void GeneratorButton()
     {
         if (!isOn)
         {

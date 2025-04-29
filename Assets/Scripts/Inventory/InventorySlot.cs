@@ -1,13 +1,23 @@
-///<summary>
-///This is a helper class (NOT MONO, NOT ON AN OBJECT)
-///That gives us some data for the inventory slots themselves
-///</summary>
+//using UnityEngine;
+//using UnityEngine.EventSystems;
+
+//public class InventorySlot : MonoBehaviour, IDropHandler
+//{
+//    public void OnDrop(PointerEventData eventData)
+//    {
+//        if (transform.childCount == 0)
+//        {
+//            GameObject dropped = eventData.pointerDrag;
+//            DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+//            draggableItem.parentAfterDrag = transform;
+//        }
+//    }
+//}
+
 [System.Serializable]
 public class InventorySlot
 {
-    //item inside slot
     public ItemData itemData;
-    //amount inside it
     public int amount;
 
     public InventorySlot(ItemData data, int amt = 1)

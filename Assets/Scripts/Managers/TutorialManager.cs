@@ -1,9 +1,3 @@
-///<summary>
-///This is the beginning of the "helper text" or "interact text"
-///in the middle of the screen.
-///with functions to turn it on and pass in a string to what you want it to say
-///and to turn it off, it will become more useful
-///</summary>
 using UnityEngine;
 using TMPro;
 
