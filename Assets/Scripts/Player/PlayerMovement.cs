@@ -1,30 +1,21 @@
-///<summary>
-///Simple player movement script (Forward, Backwards, Left, Right)
-///</summary>
 using UnityEngine;
-
 
 public class PlayerMovement : MonoBehaviour
 {
-   
+    public Transform cameraTransform;
+    public float moveSpeed = 5f;
 
-    private void Update()
+    void Update()
     {
-        MoveForward();
-        MoveSideways();
-    }
+        float inputX = Input.GetAxis("Horizontal");
+        float inputZ = Input.GetAxis("Vertical");
 
-    //translates not rigidbody/velocity changes
-    public void MoveForward()
-    {
-        float forwardInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.forward * forwardInput * 5 * Time.deltaTime);
-    }
-    public void MoveSideways()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * 5 * Time.deltaTime);
-    }
+        Vector3 camF = cameraTransform.forward; camF.y = 0; camF.Normalize();
+        Vector3 camR = cameraTransform.right; camR.y = 0; camR.Normalize();
 
+        Vector3 move = camF * inputZ + camR * inputX;
+        if (move.sqrMagnitude > 1f) move.Normalize();
 
+        transform.Translate(move * moveSpeed * Time.deltaTime, Space.World);
+    }
 }
