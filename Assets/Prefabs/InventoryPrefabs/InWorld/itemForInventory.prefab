@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6438414712239126620}
-  - component: {fileID: 8917414262535492344}
   - component: {fileID: 7953590674774768284}
   - component: {fileID: 6437301889450492918}
   - component: {fileID: 4073920391385558869}
+  - component: {fileID: 8917414262535492344}
   m_Layer: 0
   m_Name: itemForInventory
   m_TagString: Untagged
@@ -35,22 +35,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8917414262535492344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350727025696451891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3948121dda38424fb11085435c5ea47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDatabase: {fileID: 11400000, guid: 14d535d8543c32f44b41d8be0a885d97, type: 2}
-  selectedType: 1
-  amount: 5
-  itemData: {fileID: 11400000, guid: 0be43e2c5d5c5c84696ae5e6e55348fa, type: 2}
 --- !u!23 &7953590674774768284
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,3 +109,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0.12499999, z: 0}
+--- !u!114 &8917414262535492344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350727025696451891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3948121dda38424fb11085435c5ea47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase: {fileID: 11400000, guid: 14d535d8543c32f44b41d8be0a885d97, type: 2}
+  selectedType: 1
+  amount: 5
+  itemData: {fileID: 11400000, guid: 0be43e2c5d5c5c84696ae5e6e55348fa, type: 2}

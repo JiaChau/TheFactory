@@ -5,6 +5,7 @@ public class EquipmentManager : MonoBehaviour
     public static EquipmentManager Instance { get; private set; }
     public Transform playerHand;
     public Inventory inventory;
+    public PlayerGathering playerGathering; // I added -Jia
 
     private void Awake()
     {
@@ -43,6 +44,8 @@ public class EquipmentManager : MonoBehaviour
         
 
     }
+
+    /*
     public void Equip(ItemData item)
     {
         //THis checks if it is using the child script of craftable scriptable object
@@ -58,11 +61,41 @@ public class EquipmentManager : MonoBehaviour
             }
             Instantiate(GO, playerHand);
         }
-            
-
-
-        
     }
+    */
+
+    public void Equip(ItemData item)
+    {
+        // Check if the item is a craftable tool with a prefab
+        if (item is CraftableData craftable)
+        {
+            UnEquip(); // Remove previous tool
+
+            GameObject GO = craftable.prefabCreatedInWorld;
+
+            // Disable pickup logic if present
+            if (GO.GetComponent<PickUpItem>() != null)
+            {
+                GO.GetComponent<PickUpItem>().enabled = false;
+
+                if (GO.GetComponent<SphereCollider>()?.isTrigger == true)
+                    GO.GetComponent<SphereCollider>().enabled = false;
+            }
+
+            // Instantiate the tool at the player's hand
+            GameObject spawnedTool = Instantiate(GO, playerHand);
+            spawnedTool.transform.localPosition = Vector3.zero;
+            spawnedTool.transform.localRotation = Quaternion.identity;
+
+            // Update PlayerGathering reference to enable gathering logic
+            if (playerGathering != null)
+            {
+                playerGathering.equippedTool = spawnedTool;
+            }
+
+        }
+    }
+
 
     public void UnEquip()
     {
@@ -72,3 +105,4 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 }
+
