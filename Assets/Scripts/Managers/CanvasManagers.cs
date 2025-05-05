@@ -1,4 +1,3 @@
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class CanvasManagers : MonoBehaviour
@@ -9,13 +8,19 @@ public class CanvasManagers : MonoBehaviour
     public GameObject dragCanvas;
     [SerializeField]
     GameObject generatorCanvas;
+    [SerializeField]
+    GameObject craftingMachine;
     [SerializeField] 
     GameObject inventoryCanvas;
+    [SerializeField]
+    GameObject materialCanvas;
     public static CanvasManagers Instance;
 
     public enum SecondaryCanvas
     {
-        Generator
+        Generator,
+        CraftingMachine,
+        MaterialPopup
     }
     public SecondaryCanvas canvasType;
     private void Awake()
@@ -35,6 +40,8 @@ public class CanvasManagers : MonoBehaviour
 
         inventoryCanvas.SetActive(false);
         generatorCanvas.SetActive(false);
+        craftingMachine.SetActive(false);
+        materialCanvas.SetActive(false);
         isInventoryOpen = false;
         isSecondaryCanvasOpen = false;
     }
@@ -103,6 +110,10 @@ public class CanvasManagers : MonoBehaviour
         {
             case SecondaryCanvas.Generator:
                 return generatorCanvas;
+            case SecondaryCanvas.CraftingMachine:
+                return craftingMachine;
+            case SecondaryCanvas.MaterialPopup:
+                return materialCanvas;
             default:
                 break;
         }

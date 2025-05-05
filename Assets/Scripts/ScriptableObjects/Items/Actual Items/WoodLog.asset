@@ -21,3 +21,4 @@ MonoBehaviour:
   fuelProperties:
     isFuel: 1
     burnDuration: 5
+  prefabCreatedForInventory: {fileID: 470396655969761863, guid: 04b74183ffe2e9c46abe3fe00e10ce2f, type: 3}

@@ -31,37 +31,40 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        // Toggle POV
-        if (Input.GetKeyDown(KeyCode.V))
+        if (!CanvasManagers.Instance.isInventoryOpen)
+        {
+            // Toggle POV
+            if (Input.GetKeyDown(KeyCode.V))
             isFirstPerson = !isFirstPerson;
+        
+            // Mouse look
+            float mX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Mouse look
-        float mX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+            yRotation += mX;
+            xRotation -= mY;
 
-        yRotation += mX;
-        xRotation -= mY;
+            // pick clamp based on mode
+            float clampLimit = isFirstPerson ? fpsClampAngle : tpsClampAngle;
+            xRotation = Mathf.Clamp(xRotation, -clampLimit, clampLimit);
 
-        // pick clamp based on mode
-        float clampLimit = isFirstPerson ? fpsClampAngle : tpsClampAngle;
-        xRotation = Mathf.Clamp(xRotation, -clampLimit, clampLimit);
+            // apply rotations
+            transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
+            headPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
-        // apply rotations
-        transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
-        headPivot.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        // Position camera
-        if (isFirstPerson)
-        {
-            cam.transform.position = headPivot.position;
-            cam.transform.rotation = headPivot.rotation;
-        }
-        else
-        {
-            Quaternion camRot = Quaternion.Euler(xRotation, yRotation, 0f);
-            Vector3 desiredPos = headPivot.position + camRot * thirdPersonOffset;
-            cam.transform.position = desiredPos;
-            cam.transform.LookAt(headPivot.position);
+            // Position camera
+            if (isFirstPerson)
+            {
+                cam.transform.position = headPivot.position;
+                cam.transform.rotation = headPivot.rotation;
+            }
+            else
+            {
+                Quaternion camRot = Quaternion.Euler(xRotation, yRotation, 0f);
+                Vector3 desiredPos = headPivot.position + camRot * thirdPersonOffset;
+                cam.transform.position = desiredPos;
+                cam.transform.LookAt(headPivot.position);
+            }
         }
     }
 }

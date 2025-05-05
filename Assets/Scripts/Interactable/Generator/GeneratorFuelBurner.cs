@@ -124,4 +124,9 @@ public class GeneratorFuelBurner : MonoBehaviour
     {
         isOn = false;
     }
+
+    public bool GetStateOfGenerator()
+    {
+        return isOn;
+    }
 }

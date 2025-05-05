@@ -1,43 +1,3 @@
-////using UnityEngine;
-
-////public class ItemClass : MonoBehaviour
-////{
-////    public ItemData itemData;
-
-////    private void Awake()
-////    {
-////        GetComponent<MeshFilter>().mesh = itemData.mesh;
-////    }
-////}
-//using UnityEngine;
-
-//[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-//public class ItemClass : MonoBehaviour
-//{
-//    public ItemData itemData;
-
-//    private void Start()
-//    {
-//        ApplyItemVisuals();
-//    }
-
-//    public void ApplyItemVisuals()
-//    {
-//        if (itemData == null) return;
-
-//        var filter = GetComponent<MeshFilter>();
-//        var renderer = GetComponent<MeshRenderer>();
-
-//        filter.mesh = itemData.mesh;
-//        //renderer.material = itemData.material;
-//    }
-
-//    public void SetItem(ItemData newItem)
-//    {
-//        itemData = newItem;
-//        ApplyItemVisuals();
-//    }
-//}
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
@@ -76,7 +36,7 @@ public class ItemClass : MonoBehaviour
 
         filter.mesh = itemData.mesh;
         itemData.SetAmount(amount);
-        //renderer.material = itemData.material;
+        renderer.material = itemData.material;
     }
 
     private void OnTriggerEnter(Collider other)

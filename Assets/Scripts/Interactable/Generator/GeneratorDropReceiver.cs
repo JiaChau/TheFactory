@@ -45,6 +45,6 @@ public class GeneratorDropReceiver : MonoBehaviour, IDropReceiver
 
         }
         // Refresh original inventory UI causing it to snap back to the old UI if it is not a fuel type
-        InventoryManager.Instance.inventoryUI.RefreshInventoryUI();
+        InventoryUI.Instance.RefreshInventoryUI();
     }
 }

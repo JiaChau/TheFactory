@@ -45,7 +45,7 @@ public class GeneratorOutput : MonoBehaviour
     [Header("Fuel to Output Rules")]
     public List<OutputMapping> mappings;
 
-    private GeneratorFuelBurner burner;
+    public GeneratorFuelBurner burner;
     private int nextWaypoint = 0;
     private Dictionary<string, int> burnAccumulators = new Dictionary<string, int>();
 

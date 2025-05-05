@@ -1,38 +1,41 @@
-//using UnityEngine;
-//using UnityEngine.EventSystems;
 
-//public class InventorySlot : MonoBehaviour, IDropHandler
-//{
-//    public void OnDrop(PointerEventData eventData)
-//    {
-//        if (transform.childCount == 0)
-//        {
-//            GameObject dropped = eventData.pointerDrag;
-//            DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
-//            draggableItem.parentAfterDrag = transform;
-//        }
-//    }
-//}
-
+///<summary>
+///This is a helper class (NOT MONO, NOT ON AN OBJECT)
+///That gives us some data for the inventory slots themselves
+///</summary>
 [System.Serializable]
 public class InventorySlot
 {
     public ItemData itemData;
     public int amount;
+    public int slotIndex;
+    public bool isSelected = false;
 
-    public InventorySlot(ItemData data, int amt = 1)
+    public InventorySlot()
     {
-        itemData = data;
-        amount = amt;
+        itemData = null;
+        amount = 0;
     }
 
-    public bool CanStackWith(ItemData other)
+    public InventorySlot(ItemData itemData, int amount, int slotIndex)
     {
-        return itemData != null && itemData == other;
+        this.itemData = itemData;
+        this.amount = amount;
+        this.slotIndex = slotIndex;
     }
 
-    public void AddAmount(int amt)
+    public bool IsEmpty => itemData == null || amount <= 0;
+
+    public bool CanStackWith(ItemData data)
     {
-        amount += amt;
+        return itemData != null &&
+               itemData == data &&
+               itemData.maxStackSize > 1;
+    }
+
+    public void Clear()
+    {
+        itemData = null;
+        amount = 0;
     }
 }

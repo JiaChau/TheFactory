@@ -1,11 +1,17 @@
+///<summary>
+///Ths Script is actuall really cool an funky. This will use the render camera and give us a sprite
+///from a 3D model. All we have to do is position it, and press play.
+///</summary>
 using UnityEngine;
 using System.IO;
 
+//this can be taken out but doesn't reall matter
 [ExecuteInEditMode]
 public class SpriteFrom3DObject : MonoBehaviour
 {
     public Camera renderCamera;
-    public GameObject targetObject;
+    [Tooltip("The object you want rendered as a sprite")]
+    public GameObject targetObject;//the object that is to become a sprite
     public int resolution = 512;
     public string fileName = "CapturedSprite";
 
