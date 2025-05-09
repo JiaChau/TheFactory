@@ -21,17 +21,30 @@ public class ItemData : ScriptableObject
     public FuelProperties fuelProperties;
     public GameObject prefabCreatedForInventory;
 
-
-
     public enum ItemType
     {
+        // Resource drops
         wood_log,
         cooper,
         coal,
+
+        // Axes
         BasicAxe,
         StoneAxe,
         IronAxe,
-        GoldAxe
+        GoldAxe,
+
+        // Pickaxes
+        BasicPickaxe,
+        StonePickaxe,
+        IronPickaxe,
+        GoldPickaxe,
+
+        // Hoes
+        BasicHoe,
+        StoneHoe,
+        IronHoe,
+        GoldHoe
     }
 
     public void SetAmount(int newAmount)

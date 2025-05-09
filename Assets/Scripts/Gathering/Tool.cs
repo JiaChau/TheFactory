@@ -14,6 +14,9 @@ public class Tool : MonoBehaviour
     public ToolTier ToolTier => toolTier;
     public float Damage => damage;
 
+    // Optional: Used by ResourceNode for crop fortune scaling
+    public int FortuneMultiplier => Mathf.Clamp((int)toolTier + 1, 1, 5);
+
     // Initialize the tool's properties from the provided CraftableData
     public void Initialize(CraftableData data)
     {

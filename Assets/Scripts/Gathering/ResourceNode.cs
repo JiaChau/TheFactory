@@ -3,6 +3,11 @@ using System.Collections;
 
 public class ResourceNode : MonoBehaviour
 {
+    public enum ResourceType { Tree, Rock, Crop }
+
+    [Header("Resource Type")]
+    public ResourceType resourceType = ResourceType.Tree;
+
     [Header("Tool Requirements")]
     public ToolType requiredToolType;
     public ToolTier requiredToolTier = ToolTier.Basic;
@@ -22,11 +27,11 @@ public class ResourceNode : MonoBehaviour
     public int[] dropAmounts;
     public GameObject dropPrefab;
     public float dropRadius = 1.5f;
-    private float lastDropPercent = 1f; // 1f = 100% (full HP)
-    private const float dropThreshold = 0.15f; // 15% intervals
+    private float lastDropPercent = 1f;
+    private const float dropThreshold = 0.15f;
 
     [Header("Visual Object (Mesh + Collider)")]
-    public GameObject visuals; // assign the child GameObject containing the mesh + collider
+    public GameObject visuals;
 
     private Vector3 originalPosition;
     private Quaternion originalRotation;
@@ -40,58 +45,86 @@ public class ResourceNode : MonoBehaviour
 
     public void Hit(Tool tool)
     {
-        if (isHarvested || tool.ToolType != requiredToolType || tool.ToolTier < requiredToolTier)
+        if (isHarvested)
             return;
 
-        float oldPercent = currentHP / maxHP;
-        currentHP -= tool.Damage;
-        currentHP = Mathf.Max(0, currentHP);
-        float newPercent = currentHP / maxHP;
-
-        // Drop items if we crossed one or more 15% thresholds
-        while (lastDropPercent - dropThreshold >= newPercent)
+        if (tool.ToolType != requiredToolType)
         {
-            lastDropPercent -= dropThreshold;
-            DropItems(0.15f); // Drop based on one full 15% chunk
+            Debug.Log("Invalid tool type");
+            return;
         }
 
-        if (currentHP <= 0f)
+        if (tool.ToolTier < requiredToolTier)
+            return;
+
+        if (resourceType == ResourceType.Crop)
         {
+            int fortuneMultiplier = Mathf.Clamp((int)tool.ToolTier + 1, 1, 5);
+            DropItems(fortuneMultiplier); // Drop all at once, multiplied
             StartCoroutine(Respawn());
+        }
+        else
+        {
+            float oldPercent = currentHP / maxHP;
+            currentHP -= tool.Damage;
+            currentHP = Mathf.Max(0, currentHP);
+            float newPercent = currentHP / maxHP;
+
+            while (lastDropPercent - dropThreshold >= newPercent)
+            {
+                lastDropPercent -= dropThreshold;
+                DropItems(0.15f);
+            }
+
+            if (currentHP <= 0f)
+            {
+                StartCoroutine(Respawn());
+            }
         }
     }
 
 
+    // Overload for HP % based drop
     void DropItems(float percent)
     {
         for (int i = 0; i < dropItems.Length; i++)
         {
             int totalToDrop = Mathf.CeilToInt(dropAmounts[i] * percent);
-            for (int j = 0; j < totalToDrop; j++)
+            SpawnDrops(dropItems[i], totalToDrop);
+        }
+    }
+
+    // Overload for fortune multiplier
+    void DropItems(int multiplier)
+    {
+        for (int i = 0; i < dropItems.Length; i++)
+        {
+            int totalToDrop = dropAmounts[i] * multiplier;
+            SpawnDrops(dropItems[i], totalToDrop);
+        }
+    }
+
+    void SpawnDrops(ItemData item, int count)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            Vector3 offset;
+            do
             {
-                // Donut spawn logic: avoid center
-                Vector3 offset;
-                do
-                {
-                    offset = new Vector3(
-                        Random.Range(-dropRadius, dropRadius),
-                        0f,
-                        Random.Range(-dropRadius, dropRadius)
-                    );
-                } while (offset.magnitude < dropRadius * 0.5f); // avoid center spawn
+                offset = new Vector3(
+                    Random.Range(-dropRadius, dropRadius),
+                    0f,
+                    Random.Range(-dropRadius, dropRadius)
+                );
+            } while (offset.magnitude < dropRadius * 0.5f);
 
-                // Base spawn position around the node
-                Vector3 dropPos = transform.position + offset;
+            Vector3 dropPos = transform.position + offset;
+            dropPos.y = dropPrefab.transform.position.y;
 
-                // Use the prefab's base Y height
-                dropPos.y = dropPrefab.transform.position.y;
-
-                // Spawn the drop
-                GameObject drop = Instantiate(dropPrefab, dropPos, Quaternion.identity);
-                PickUpItem pickup = drop.GetComponent<PickUpItem>();
-                if (pickup)
-                    pickup.itemData = dropItems[i];
-            }
+            GameObject drop = Instantiate(dropPrefab, dropPos, Quaternion.identity);
+            PickUpItem pickup = drop.GetComponent<PickUpItem>();
+            if (pickup)
+                pickup.itemData = item;
         }
     }
 
@@ -104,7 +137,7 @@ public class ResourceNode : MonoBehaviour
         yield return new WaitForSeconds(respawnTime);
 
         currentHP = maxHP;
-        lastDropPercent = 1f; // reset drop tracking
+        lastDropPercent = 1f;
         transform.position = originalPosition;
         transform.rotation = originalRotation;
         if (visuals != null)
@@ -112,7 +145,6 @@ public class ResourceNode : MonoBehaviour
 
         isHarvested = false;
     }
-
 
     public void ShowHitEffect()
     {

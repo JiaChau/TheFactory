@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a5d8e261e3ee00418a63e7475b39e3a, type: 3}
-  m_Name: GoldAxe
+  m_Name: StoneHoe
   m_EditorClassIdentifier: 
-  mesh: {fileID: 4300000, guid: 06dd92e669e4d8e4c8f146855fa0bee1, type: 3}
+  mesh: {fileID: -7625642800717388127, guid: cac02654c83b2c94faf8ee2dfcaab1d9, type: 3}
   icon: {fileID: 21300000, guid: 33e2549d358dad04ab09fac1cdadc6d9, type: 3}
   material: {fileID: 2100000, guid: c0a0c5ee5464e1a499f0feaadada3983, type: 2}
-  itemType: 6
+  itemType: 12
   amount: 1
   maxStackSize: 1
   fuelProperties:
     isFuel: 0
     burnDuration: 0
   prefabCreatedForInventory: {fileID: 470396655969761863, guid: 04b74183ffe2e9c46abe3fe00e10ce2f, type: 3}
-  toolType: 0
-  toolTier: 3
-  toolDamage: 50
-  prefabCreatedInWorld: {fileID: 7225774526185552197, guid: bf0dd1502d0b1f348bfd5675dc7b2a05, type: 3}
+  toolType: 2
+  toolTier: 1
+  toolDamage: 100
+  prefabCreatedInWorld: {fileID: 857172516033146916, guid: ec73b676e292dcc4ea645d076491dbad, type: 3}
   materialsToCraft:
   - item: {fileID: 11400000, guid: 1e15b4d30efeef1468e50bb2a23c4d54, type: 2}
     amount: 2

@@ -23,7 +23,7 @@ MonoBehaviour:
     burnDuration: 0
   prefabCreatedForInventory: {fileID: 470396655969761863, guid: 04b74183ffe2e9c46abe3fe00e10ce2f, type: 3}
   toolType: 0
-  toolTier: 0
+  toolTier: 2
   toolDamage: 45
   prefabCreatedInWorld: {fileID: 7225774526185552197, guid: fdec4f0d73565a24f8bbcbd542f27711, type: 3}
   materialsToCraft:
