@@ -87,6 +87,14 @@ public class EquipmentManager : MonoBehaviour
             spawnedTool.transform.localPosition = Vector3.zero;
             spawnedTool.transform.localRotation = Quaternion.identity;
 
+            // Set damage from CraftableData
+            Tool tool = spawnedTool.GetComponent<Tool>();
+            if (tool != null)
+            {
+                tool.Initialize(craftable); // Fully configures tool with ScriptableObject data
+            }
+
+
             // Update PlayerGathering reference to enable gathering logic
             if (playerGathering != null)
             {

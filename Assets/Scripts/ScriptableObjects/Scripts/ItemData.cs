@@ -28,7 +28,10 @@ public class ItemData : ScriptableObject
         wood_log,
         cooper,
         coal,
-        axe
+        BasicAxe,
+        StoneAxe,
+        IronAxe,
+        GoldAxe
     }
 
     public void SetAmount(int newAmount)

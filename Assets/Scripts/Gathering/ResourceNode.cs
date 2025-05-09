@@ -22,6 +22,8 @@ public class ResourceNode : MonoBehaviour
     public int[] dropAmounts;
     public GameObject dropPrefab;
     public float dropRadius = 1.5f;
+    private float lastDropPercent = 1f; // 1f = 100% (full HP)
+    private const float dropThreshold = 0.15f; // 15% intervals
 
     [Header("Visual Object (Mesh + Collider)")]
     public GameObject visuals; // assign the child GameObject containing the mesh + collider
@@ -38,21 +40,27 @@ public class ResourceNode : MonoBehaviour
 
     public void Hit(Tool tool)
     {
-        if (isHarvested || tool.toolType != requiredToolType || tool.toolTier < requiredToolTier)
+        if (isHarvested || tool.ToolType != requiredToolType || tool.ToolTier < requiredToolTier)
             return;
 
-        float prevPercent = currentHP / maxHP;
-        currentHP -= tool.damage;
+        float oldPercent = currentHP / maxHP;
+        currentHP -= tool.Damage;
+        currentHP = Mathf.Max(0, currentHP);
         float newPercent = currentHP / maxHP;
-        float percentDelta = prevPercent - newPercent;
 
-        DropItems(percentDelta);
+        // Drop items if we crossed one or more 15% thresholds
+        while (lastDropPercent - dropThreshold >= newPercent)
+        {
+            lastDropPercent -= dropThreshold;
+            DropItems(0.15f); // Drop based on one full 15% chunk
+        }
 
         if (currentHP <= 0f)
         {
             StartCoroutine(Respawn());
         }
     }
+
 
     void DropItems(float percent)
     {
@@ -96,6 +104,7 @@ public class ResourceNode : MonoBehaviour
         yield return new WaitForSeconds(respawnTime);
 
         currentHP = maxHP;
+        lastDropPercent = 1f; // reset drop tracking
         transform.position = originalPosition;
         transform.rotation = originalRotation;
         if (visuals != null)
@@ -103,6 +112,7 @@ public class ResourceNode : MonoBehaviour
 
         isHarvested = false;
     }
+
 
     public void ShowHitEffect()
     {
