@@ -61,14 +61,24 @@ public class ResourceNode : MonoBehaviour
             int totalToDrop = Mathf.CeilToInt(dropAmounts[i] * percent);
             for (int j = 0; j < totalToDrop; j++)
             {
-                Vector3 randomOffset = new Vector3(
-                    Random.Range(-dropRadius, dropRadius),
-                    0f,
-                    Random.Range(-dropRadius, dropRadius)
-                );
+                // Donut spawn logic: avoid center
+                Vector3 offset;
+                do
+                {
+                    offset = new Vector3(
+                        Random.Range(-dropRadius, dropRadius),
+                        0f,
+                        Random.Range(-dropRadius, dropRadius)
+                    );
+                } while (offset.magnitude < dropRadius * 0.5f); // avoid center spawn
 
-                Vector3 dropPos = transform.position + randomOffset;
+                // Base spawn position around the node
+                Vector3 dropPos = transform.position + offset;
 
+                // Use the prefab's base Y height
+                dropPos.y = dropPrefab.transform.position.y;
+
+                // Spawn the drop
                 GameObject drop = Instantiate(dropPrefab, dropPos, Quaternion.identity);
                 PickUpItem pickup = drop.GetComponent<PickUpItem>();
                 if (pickup)
