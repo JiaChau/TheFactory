@@ -15,9 +15,13 @@ public class PlayerGathering : MonoBehaviour
 
             if (Time.time >= lastHitTime + hitCooldown)
             {
-                if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 3f))
+                // Exclude "Pickup" layer from raycast
+                int layerMask = ~(1 << LayerMask.NameToLayer("Pickup"));
+
+                if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 3f, layerMask))
                 {
-                    ResourceNode node = hit.collider.GetComponent<ResourceNode>();
+                    ResourceNode node = hit.collider.GetComponentInParent<ResourceNode>();
+
                     Tool tool = equippedTool.GetComponent<Tool>();
 
                     if (node && tool)
@@ -31,4 +35,3 @@ public class PlayerGathering : MonoBehaviour
         }
     }
 }
-

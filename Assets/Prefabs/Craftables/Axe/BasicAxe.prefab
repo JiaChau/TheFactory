@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1673549359818520494}
   - component: {fileID: 2123224126396661659}
   m_Layer: 0
-  m_Name: Axe
+  m_Name: BasicAxe
   m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolType: 0
   toolTier: 0
-  damage: 24
+  damage: 12
 --- !u!1001 &4515737003931214344
 PrefabInstance:
   m_ObjectHideFlags: 0

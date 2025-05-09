@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftables:
   - {fileID: 11400000, guid: 546f65ae58cf24e4ba90a9eb60e442e7, type: 2}
+  - {fileID: 11400000, guid: 89183b78a8c601e49b6b592726fd9b64, type: 2}
+  - {fileID: 11400000, guid: 39921ee4344f7a044af5c72873b0e0fb, type: 2}
+  - {fileID: 11400000, guid: eafae64a7a5da0349aa3083187057503, type: 2}
