@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4597078948584197556, guid: fcdb12c0011022649b9ec1569d29917d, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 53e6af4debeee994cbc2075fc493472a, type: 2}
+    - target: {fileID: 4597078948584197556, guid: fcdb12c0011022649b9ec1569d29917d, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5dece9bf5d8b98a49a7b35ebb052b799, type: 2}
     - target: {fileID: 6081108919004544678, guid: fcdb12c0011022649b9ec1569d29917d, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -100,7 +108,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -126,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3980317568968692961}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e6ee0d2335b67e428556b4530639435, type: 3}
   m_Name: 

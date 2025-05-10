@@ -17,7 +17,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 7b8530a921aaaf34aa7b01625685b84f, type: 2}
   itemType: 2
   amount: 5
-  maxStackSize: 99
+  maxStackSize: 25
   fuelProperties:
     isFuel: 1
     burnDuration: 15

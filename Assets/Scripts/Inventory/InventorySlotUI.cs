@@ -31,10 +31,5 @@ public class InventorySlotUI : MonoBehaviour, IDropHandler
                 InventoryUI.Instance.RefreshInventoryUI();
 
         }
-        
-        //else
-        //{
-        //    InventoryManager.Instance.inventory.AddItem()
-        //}
     }
 }

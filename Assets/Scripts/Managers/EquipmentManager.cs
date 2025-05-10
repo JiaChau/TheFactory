@@ -20,14 +20,22 @@ public class EquipmentManager : MonoBehaviour
     }
     void Update()
     {
+      
         if (!CanvasManagers.Instance.isInventoryOpen)
         {
             for (int i = 0; i < inventory.hotBarSlots.Count; i++)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1 + i) && !inventory.GetSelectedItem().IsEmpty)
+                if (Input.GetKeyDown(KeyCode.Alpha1 + i) && !inventory.slots[i].IsEmpty) 
                 {
-                    EquipmentManager.Instance.Equip(inventory.GetSelectedItem().itemData);
+                    if(!inventory.GetSelectedItem().IsEmpty)
+                    {
+                        Equip(inventory.GetSelectedItem().itemData);
+                    }
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                UnEquip();
             }
         }
         else
@@ -44,26 +52,6 @@ public class EquipmentManager : MonoBehaviour
         
 
     }
-
-    /*
-    public void Equip(ItemData item)
-    {
-        //THis checks if it is using the child script of craftable scriptable object
-        if(item is CraftableData craftable)
-        {
-            UnEquip();
-            GameObject GO = craftable.prefabCreatedInWorld;
-            if(GO.GetComponent<PickUpItem>() != null)
-            {
-                GO.GetComponent<PickUpItem>().enabled = false;
-                if(GO.GetComponent<SphereCollider>().isTrigger)
-                    GO.GetComponent<SphereCollider>().enabled = false;
-            }
-            Instantiate(GO, playerHand);
-        }
-    }
-    */
-
     public void Equip(ItemData item)
     {
         // Check if the item is a craftable tool with a prefab

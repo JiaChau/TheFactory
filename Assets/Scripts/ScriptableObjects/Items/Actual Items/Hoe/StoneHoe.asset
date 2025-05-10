@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StoneHoe
   m_EditorClassIdentifier: 
   mesh: {fileID: -7625642800717388127, guid: cac02654c83b2c94faf8ee2dfcaab1d9, type: 3}
-  icon: {fileID: 21300000, guid: 33e2549d358dad04ab09fac1cdadc6d9, type: 3}
+  icon: {fileID: 21300000, guid: 77f151b372a23e641b6dbb691c3fdd2e, type: 3}
   material: {fileID: 2100000, guid: c0a0c5ee5464e1a499f0feaadada3983, type: 2}
-  itemType: 12
+  itemType: 15
   amount: 1
   maxStackSize: 1
   fuelProperties:

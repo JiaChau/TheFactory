@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: IronPickaxe
   m_EditorClassIdentifier: 
   mesh: {fileID: 8852577410010032590, guid: a2e5c537bbbaee44082807d1614edef1, type: 3}
-  icon: {fileID: 21300000, guid: 33e2549d358dad04ab09fac1cdadc6d9, type: 3}
+  icon: {fileID: 21300000, guid: 9c76833186299f74bb7ca010c3b2d270, type: 3}
   material: {fileID: 2100000, guid: c0a0c5ee5464e1a499f0feaadada3983, type: 2}
-  itemType: 9
+  itemType: 12
   amount: 1
   maxStackSize: 1
   fuelProperties:

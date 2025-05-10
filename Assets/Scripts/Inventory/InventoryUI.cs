@@ -52,7 +52,7 @@ public class InventoryUI : MonoBehaviour
             InventorySlot slotData = playerInventory.slots[i];
             if (slotData.isSelected)
             {
-                slotGO.GetComponent<Image>().color = Color.yellow;
+                slotGO.GetComponent<Image>().color = Color.black;
             }
             else
             {

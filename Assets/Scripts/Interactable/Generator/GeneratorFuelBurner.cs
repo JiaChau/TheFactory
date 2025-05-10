@@ -66,8 +66,7 @@ public class GeneratorFuelBurner : MonoBehaviour
                 }
                 else
                 {
-                    isBurning = false;
-                    isOn = false;
+                    TurnOffGenerator();
                     Debug.Log("🔥 Generator stopped — out of fuel.");
                 }
             }
@@ -105,8 +104,10 @@ public class GeneratorFuelBurner : MonoBehaviour
             currentFuel = FindValidFuel();
             if (currentFuel != null)
             {
+                SoundManager.Instance.PlayGeneratorSound();
                 isOn = true;
                 StartBurn(currentFuel);
+
             }
             else
             {
@@ -122,7 +123,9 @@ public class GeneratorFuelBurner : MonoBehaviour
 
     public void TurnOffGenerator()
     {
+        isBurning = false;
         isOn = false;
+        SoundManager.Instance.StopCraftingSound();
     }
 
     public bool GetStateOfGenerator()

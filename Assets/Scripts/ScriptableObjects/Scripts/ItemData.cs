@@ -27,6 +27,9 @@ public class ItemData : ScriptableObject
         wood_log,
         cooper,
         coal,
+        rocks,
+        iron,
+        gold,
 
         // Axes
         BasicAxe,

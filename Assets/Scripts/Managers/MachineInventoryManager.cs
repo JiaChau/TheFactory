@@ -93,6 +93,7 @@ public class MachineInventoryManager : MonoBehaviour
     //this is moved to the singleton
     public IEnumerator StartCrafting(CraftableData craftableData)
     {
+        SoundManager.Instance.PlayCraftingSound();
         MaterialPopUI.Instance.crafting = true;
         float timer = craftableData.timeToCraft;
         //this can be brough back if we want to show a crafting timer
@@ -106,6 +107,7 @@ public class MachineInventoryManager : MonoBehaviour
         }
         CraftItem(craftableData);
         MaterialPopUI.Instance.crafting = false;
+        SoundManager.Instance.StopCraftingSound();
         // MaterialPopUI.Instance.TurnOffSlider();
     }
     public void SpawnCraftedItem(CraftableData craftedItem)

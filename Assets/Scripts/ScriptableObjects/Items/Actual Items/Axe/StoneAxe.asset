@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StoneAxe
   m_EditorClassIdentifier: 
   mesh: {fileID: 4300000, guid: 06dd92e669e4d8e4c8f146855fa0bee1, type: 3}
-  icon: {fileID: 21300000, guid: 33e2549d358dad04ab09fac1cdadc6d9, type: 3}
+  icon: {fileID: 21300000, guid: 9637c2eaa82f54e4598ac532c9158c8c, type: 3}
   material: {fileID: 2100000, guid: c0a0c5ee5464e1a499f0feaadada3983, type: 2}
-  itemType: 4
+  itemType: 11
   amount: 1
   maxStackSize: 1
   fuelProperties:

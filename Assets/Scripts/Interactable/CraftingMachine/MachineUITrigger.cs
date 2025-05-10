@@ -7,10 +7,10 @@ public class MachineUITrigger : UITrigger
         CanvasManagers.Instance.SetSecondaryCanvas(CanvasManagers.SecondaryCanvas.CraftingMachine);
     }
 
-    public override void Interact()
-    {
-        if (!listCreated)
-            MachineUI.Instance.RefreshMachineUI();
-            craftingMenu.GenerateCraftingList();
-    }
+    //public override void Interact()
+    //{
+    //    if (!listCreated)
+    //        MachineUI.Instance.RefreshMachineUI();
+    //        craftingMenu.GenerateCraftingList();
+    //}
 }

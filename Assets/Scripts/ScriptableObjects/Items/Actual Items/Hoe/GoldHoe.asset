@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GoldHoe
   m_EditorClassIdentifier: 
   mesh: {fileID: -7625642800717388127, guid: cac02654c83b2c94faf8ee2dfcaab1d9, type: 3}
-  icon: {fileID: 21300000, guid: 33e2549d358dad04ab09fac1cdadc6d9, type: 3}
+  icon: {fileID: 21300000, guid: ffc2c1a24dbb5e84a8e10a28dafc2864, type: 3}
   material: {fileID: 2100000, guid: c0a0c5ee5464e1a499f0feaadada3983, type: 2}
-  itemType: 14
+  itemType: 17
   amount: 1
   maxStackSize: 1
   fuelProperties:

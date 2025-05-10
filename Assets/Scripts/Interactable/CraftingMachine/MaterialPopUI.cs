@@ -60,6 +60,8 @@ public class MaterialPopUI : MonoBehaviour
         popupPanel.SetActive(false);
         text.text = "";
         text.enabled = false;
+
+        CanvasManagers.Instance.SetSecondaryCanvas(CanvasManagers.SecondaryCanvas.CraftingMachine);
     }
 
     //public void TurnOnSlider()

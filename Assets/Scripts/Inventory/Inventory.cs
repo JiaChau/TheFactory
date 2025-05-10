@@ -23,8 +23,8 @@ public class Inventory : MonoBehaviour
             hotBarSlots.Add(new InventorySlot(null, 0, i));
         }
 
-        //Debug.Log($"InventoryUI.Instance: {InventoryUI.Instance}");
-        //Debug.Log($"HotBarUI.Instance: {HotBarUI.Instance}");
+        Debug.Log($"InventoryUI.Instance: {InventoryUI.Instance}");
+        Debug.Log($"HotBarUI.Instance: {HotBarUI.Instance}");
 
         InventoryUI.Instance?.RefreshInventoryUI();
         HotBarUI.Instance?.RefreshHotbarUI();
