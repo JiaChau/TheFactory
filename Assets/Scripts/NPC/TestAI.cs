@@ -14,7 +14,7 @@ public class TestAI : MonoBehaviour
 
  private NavMeshAgent priestAgent;
 
- private float normalSpeed = 30f;
+ private float normalSpeed = 1f;
 
  private int waypointIndex;
 
